@@ -1,37 +1,6 @@
 package facade
 
-import (
-	"fmt"
-	"strings"
-)
-
-//NewComputerFacade creates computerFacade
-func NewComputerFacade() *computerFacade {
-	return &computerFacade{
-		cpu:       &cpu{},
-		memory:    &memory{},
-		hardDrive: &hardDrive{},
-	}
-}
-
-// computerFacade implements facade
-type computerFacade struct {
-	cpu       *cpu
-	memory    *memory
-	hardDrive *hardDrive
-}
-
-//Start returns how computer will start.
-func (f *computerFacade) Start() string {
-	position := "0x00"
-	result := []string{
-		f.cpu.Freeze(),
-		f.memory.Load(position, f.hardDrive.Read(100, 1024)),
-		f.cpu.Jump(position),
-		f.cpu.Execute(),
-	}
-	return strings.Join(result, "\n")
-}
+import "fmt"
 
 // cpu implements a subsystem "cpu"
 type cpu struct{}
@@ -51,6 +20,11 @@ func (c *cpu) Execute() string {
 	return fmt.Sprint("Executing.")
 }
 
+// NewCPU creates cpu
+func NewCPU() *cpu {
+	return &cpu{}
+}
+
 // memory implements a subsystem "memory"
 type memory struct{}
 
@@ -59,10 +33,20 @@ func (m *memory) Load(position, data string) string {
 	return fmt.Sprintf("Loading from %v data: '%v'.", position, data)
 }
 
+// NewMemory creates memory
+func NewMemory() *memory {
+	return &memory{}
+}
+
 // hardDrive implements a subsystem "hardDrive"
 type hardDrive struct{}
 
 // Read implementation
 func (h *hardDrive) Read(lba, size int) string {
 	return fmt.Sprintf("Some data from sector %d with size %d", lba, size)
+}
+
+// NewMemory creates memory
+func NewHardDrive() *hardDrive {
+	return &hardDrive{}
 }
