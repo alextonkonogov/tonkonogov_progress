@@ -26,27 +26,36 @@ func NewCPU() *cpu {
 }
 
 // memory implements a subsystem "memory"
-type memory struct{}
+type memory struct {
+	position string
+}
 
 // Load implementation
 func (m *memory) Load(position, data string) string {
-	return fmt.Sprintf("Loading from %v data: '%v'.", position, data)
+	return fmt.Sprintf("Loading from %v data: '%v'.", m.position, data)
 }
 
 // NewMemory creates memory
-func NewMemory() *memory {
-	return &memory{}
+func NewMemory(position string) *memory {
+	return &memory{
+		position: position,
+	}
 }
 
 // hardDrive implements a subsystem "hardDrive"
-type hardDrive struct{}
+type hardDrive struct {
+	lba, size int
+}
 
 // Read implementation
-func (h *hardDrive) Read(lba, size int) string {
-	return fmt.Sprintf("Some data from sector %d with size %d", lba, size)
+func (h *hardDrive) Read() string {
+	return fmt.Sprintf("Some data from sector %d with size %d", h.lba, h.size)
 }
 
 // NewMemory creates memory
-func NewHardDrive() *hardDrive {
-	return &hardDrive{}
+func NewHardDrive(lba, size int) *hardDrive {
+	return &hardDrive{
+		lba:  lba,
+		size: size,
+	}
 }

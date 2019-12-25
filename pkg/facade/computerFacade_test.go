@@ -6,11 +6,10 @@ import (
 )
 
 func TestFacade(t *testing.T) {
-	expect := "Freezing processor.\nLoading from 0x00 data: 'Some data from sector 100 with size 1024'.\nJumping to: 0x00.\nExecuting."
-	computer := NewComputerFacade()
+	position, lba, size := "0x00", 100, 1024
+	expect := fmt.Sprintf("Freezing processor.\nLoading from %v data: 'Some data from sector %d with size %d'.\nJumping to: %v.\nExecuting.", position, lba, size, position)
+	computer := NewComputerFacade(position, lba, size)
 	result := computer.Start()
-
-	fmt.Println(result)
 
 	if result != expect {
 		t.Errorf("Expect result to equal %s, but %s.\n", expect, result)

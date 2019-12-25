@@ -13,21 +13,20 @@ type computerFacade struct {
 
 // Start returns how computer will start.
 func (f *computerFacade) Start() string {
-	position := "0x00"
 	result := []string{
 		f.cpu.Freeze(),
-		f.memory.Load(position, f.hardDrive.Read(100, 1024)),
-		f.cpu.Jump(position),
+		f.memory.Load(f.memory.position, f.hardDrive.Read()),
+		f.cpu.Jump(f.memory.position),
 		f.cpu.Execute(),
 	}
 	return strings.Join(result, "\n")
 }
 
 // NewComputerFacade creates computerFacade
-func NewComputerFacade() *computerFacade {
+func NewComputerFacade(position string, lba, size int) *computerFacade {
 	return &computerFacade{
 		cpu:       NewCPU(),
-		memory:    NewMemory(),
-		hardDrive: NewHardDrive(),
+		memory:    NewMemory(position),
+		hardDrive: NewHardDrive(lba, size),
 	}
 }
