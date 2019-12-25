@@ -1,4 +1,4 @@
-package builder
+package main
 
 import (
 	"fmt"
@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	toys, bed, floor := "scatterd", "prorerly", "normally"
+	toys, bed, floor := "scattered", "prorerly", "normally"
 
 	order := builder.NewOrder()
 	mother := builder.NewMother(builder.NewCleanUpTheRoom(order))
