@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"tonkonogov_progress/pkg/facade"
+
+	"github.com/alextonkonogov/tonkonogov_progress/pkg/facade"
 )
 
 func main() {

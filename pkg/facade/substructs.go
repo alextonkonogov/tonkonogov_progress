@@ -52,7 +52,7 @@ func (h *hardDrive) Read() string {
 	return fmt.Sprintf("Some data from sector %d with size %d", h.lba, h.size)
 }
 
-// NewMemory creates memory
+// NewHardDrive creates hardDrive
 func NewHardDrive(lba, size int) *hardDrive {
 	return &hardDrive{
 		lba:  lba,
