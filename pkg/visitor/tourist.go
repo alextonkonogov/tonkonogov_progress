@@ -4,17 +4,17 @@ package visitor
 type tourist struct {
 }
 
-// VisitBolhoiTheatre implements visit to SushiBar.
+// VisitBolhoiTheatre implements visit to BolhoiTheatre
 func (v *tourist) VisitBolhoiTheatre(p *bolshoiTheatre) string {
 	return p.SeePerformance()
 }
 
-// VisitRedSuare implements visit to Pizzeria.
+// VisitRedSuare implements visit to RedSuare
 func (v *tourist) VisitRedSuare(p *redSquare) string {
 	return p.MakePhoto()
 }
 
-// VisitGorkyPark implements visit to BurgerBar.
+// VisitGorkyPark implements visit to GorkyPark
 func (v *tourist) VisitGorkyPark(p *gorkyPark) string {
 	return p.WalkAround()
 }
