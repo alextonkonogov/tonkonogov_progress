@@ -6,9 +6,9 @@ import (
 	"github.com/alextonkonogov/tonkonogov_progress/pkg/builder"
 )
 
-func main() {
-	toys, bed, floor := "scattered", "prorerly", "normally"
+var toys, bed, floor = "scattered", "prorerly", "normally"
 
+func main() {
 	order := builder.NewOrder()
 	mother := builder.NewMother(builder.NewCleanUpTheRoom(order))
 	mother.Cleaning(toys, bed, floor)
