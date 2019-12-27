@@ -2,19 +2,33 @@ package builder
 
 import (
 	"fmt"
+	"strconv"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
-var toys, bed, floor = "all", "accurately", "carefully"
+var tests = []struct {
+	toys, bed, floor string
+}{
+	{"all", "accurately", "carefully"},
+	{"scattered", "prorerly", "normally"},
+	{"damned", "quickly", "completely"},
+}
 
 func TestBuilder(t *testing.T) {
-	expect := fmt.Sprintf("Collected %v toys\nMade the bed %v\nVacuumed the floor %v\n", toys, bed, floor)
-	order := NewOrder()
-	mother := NewMother(NewCleanUpTheRoom(order))
-	mother.Cleaning(toys, bed, floor)
-	result := order.Show()
+	for i, tt := range tests {
+		name := strconv.Itoa(i)
+		t.Run(name, func(t *testing.T) {
+			toys, bed, floor := tt.toys, tt.bed, tt.floor
+			expect := fmt.Sprintf("Collected %v toys\nMade the bed %v\nVacuumed the floor %v\n", toys, bed, floor)
+			order := NewOrder()
+			mother := NewMother(NewCleanUpTheRoom(order))
+			mother.Cleaning(toys, bed, floor)
+			result := order.Show()
 
-	if result != expect {
-		t.Errorf("Expect result to %s, but %s", result, expect)
+			fmt.Println(result)
+			assert.EqualValues(t, expect, result, "Result is not equal to the expected one")
+		})
 	}
 }
