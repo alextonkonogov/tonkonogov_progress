@@ -10,7 +10,10 @@ var toys, bed, floor = "scattered", "prorerly", "normally"
 
 func main() {
 	order := builder.NewOrder()
-	mother := builder.NewMother(builder.NewCleanUpTheRoom(order))
+	builder.CallThis(order)
+	mother := builder.NewMother(builder.NewRoomCleaning(order))
+	builder.CallThis(mother)
+	builder.CallThis(builder.NewRoomCleaning(order))
 	mother.Cleaning(toys, bed, floor)
 	result := order.Show()
 

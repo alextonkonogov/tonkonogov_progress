@@ -2,29 +2,33 @@ package builder
 
 import "fmt"
 
-// cleanUpTheRoom implements child interface
-type cleanUpTheRoom struct {
+// roomCleaning implements child interface
+type roomCleaning struct {
 	order *order
 }
 
-// NewCleanUpTheRoom creates cleanUpTheRoom
-func NewCleanUpTheRoom(order *order) *cleanUpTheRoom {
-	return &cleanUpTheRoom{
-		order: order,
-	}
-}
-
 // MakeTheBed makes the bed
-func (c *cleanUpTheRoom) MakeTheBed(direction string) {
-	c.order.result += fmt.Sprintf("Made the bed %v\n", direction)
+func (r *roomCleaning) MakeTheBed(direction string) {
+	r.order.result += fmt.Sprintf("Made the bed %v\n", direction)
 }
 
 // CollectToys collects the toys
-func (c *cleanUpTheRoom) CollectToys(direction string) {
-	c.order.result += fmt.Sprintf("Collected %v toys\n", direction)
+func (r *roomCleaning) CollectToys(direction string) {
+	r.order.result += fmt.Sprintf("Collected %v toys\n", direction)
 }
 
 // VacuumTheFloor cleans the floor using vacuum cleaner
-func (c *cleanUpTheRoom) VacuumTheFloor(direction string) {
-	c.order.result += fmt.Sprintf("Vacuumed the floor %v\n", direction)
+func (r *roomCleaning) VacuumTheFloor(direction string) {
+	r.order.result += fmt.Sprintf("Vacuumed the floor %v\n", direction)
+}
+
+func (r *roomCleaning) Call() {
+	fmt.Println("...starting of room cleaning")
+}
+
+// NewRoomCleaning creates roomCleaning
+func NewRoomCleaning(order *order) *roomCleaning {
+	return &roomCleaning{
+		order: order,
+	}
 }
