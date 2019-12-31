@@ -22,6 +22,7 @@ func (r *roomCleaning) VacuumTheFloor(direction string) {
 	r.order.result += fmt.Sprintf("Vacuumed the floor %v\n", direction)
 }
 
+// Call implementation
 func (r *roomCleaning) Call() {
 	fmt.Println("...starting of room cleaning")
 }

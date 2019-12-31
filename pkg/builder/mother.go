@@ -14,6 +14,7 @@ func (m *mother) Cleaning(toys, bed, floor string) {
 	m.son.VacuumTheFloor(floor)
 }
 
+// Call implementation
 func (m *mother) Call() {
 	fmt.Println("...mother is initiated")
 }

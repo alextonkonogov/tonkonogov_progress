@@ -7,10 +7,12 @@ type child interface {
 	VacuumTheFloor(direction string)
 }
 
-type calling interface {
+// caller provides a caller interface
+type caller interface {
 	Call()
 }
 
-func CallThis(c calling) {
+// function receives a caller interface
+func Call(c caller) {
 	c.Call()
 }

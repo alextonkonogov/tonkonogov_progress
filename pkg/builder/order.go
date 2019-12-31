@@ -12,6 +12,7 @@ func (o *order) Show() string {
 	return o.result
 }
 
+// Call implementation
 func (o *order) Call() {
 	fmt.Println("...order is expected")
 }
