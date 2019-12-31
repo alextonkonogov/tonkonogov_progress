@@ -13,6 +13,7 @@ func (h *hardDrive) Read() string {
 	return fmt.Sprintf("Some data from sector %d with size %d", h.lba, h.size)
 }
 
+// MakeSound implementation
 func (h *hardDrive) MakeSound() string {
 	return fmt.Sprintf("...%v...", h.sound)
 }

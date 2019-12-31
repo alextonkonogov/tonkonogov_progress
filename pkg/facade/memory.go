@@ -10,6 +10,7 @@ type memory struct {
 
 // Load implementation
 func (m *memory) Load(position, data string) string {
+
 	return fmt.Sprintf("Loading from %v data: '%v'.", m.position, data)
 }
 

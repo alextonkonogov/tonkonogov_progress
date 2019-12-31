@@ -13,6 +13,7 @@ type computerFacade struct {
 	hardDrive *hardDrive
 }
 
+// MakeSound implementation
 func (f *computerFacade) MakeSound() string {
 	return fmt.Sprintf("...%v...", f.sound)
 }

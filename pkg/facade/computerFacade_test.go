@@ -2,6 +2,7 @@ package facade
 
 import (
 	"fmt"
+	"strconv"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -22,14 +23,13 @@ var tests = []struct {
 
 func TestFacade(t *testing.T) {
 	for i, tt := range tests {
-		t.Run(tt.position, func(t *testing.T) {
+		t.Run(strconv.Itoa(i), func(t *testing.T) {
 			position, lba, size := tt.position, tt.lba, tt.size
 			expect := fmt.Sprintf("...sounds of starting computer...\nFreezing processor.\n...sounds of working cpu...\nLoading from %v data: 'Some data from sector %d with size %d'.\n...sounds of working memory...\n...sounds of working hard drive...\nJumping to: %v.\nExecuting.", position, lba, size, position)
 			computer := NewComputerFacade(position, lba, size)
 			result := computer.Start()
 
 			assert.EqualValues(t, expect, result, "Result is not equal to the expected one")
-			t.Log("test №", i)
 		})
 	}
 }

@@ -22,6 +22,7 @@ func (c *cpu) Execute() string {
 	return fmt.Sprint("Executing.")
 }
 
+// MakeSound implementation
 func (c *cpu) MakeSound() string {
 	return fmt.Sprintf("...%v...", c.sound)
 }
