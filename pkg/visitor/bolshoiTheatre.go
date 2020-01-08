@@ -18,6 +18,7 @@ func (b *bolshoiTheatre) SeePerformance() string {
 	return fmt.Sprintf("See a %v in %v\n", b.product, b.name)
 }
 
+// NewBolshoiTheatre creates bolshoiTheatre
 func NewBolshoiTheatre() *bolshoiTheatre {
 	return &bolshoiTheatre{
 		name:    "The Bolshoi Theatre",

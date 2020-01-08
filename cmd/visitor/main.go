@@ -7,11 +7,11 @@ import (
 )
 
 func main() {
-	city := visitor.NewCity()
+	city := visitor.NewMoscow()
 
 	city.Add(visitor.NewRedSquare())
 	city.Add(visitor.NewBolshoiTheatre())
-	city.Add(visitor.NewBurgerBar())
+	city.Add(visitor.NewGorkyPark())
 
 	result := city.Accept(visitor.NewTourist())
 	fmt.Println(result)

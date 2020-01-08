@@ -18,6 +18,7 @@ func (r *redSquare) MakePhoto() string {
 	return fmt.Sprintf("Make a photo of %v in %v\n", r.showplace, r.name)
 }
 
+// NewRedSquare creates redSquare
 func NewRedSquare() *redSquare {
 	return &redSquare{
 		name:      "The Red Square",

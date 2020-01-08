@@ -19,6 +19,7 @@ func (v *tourist) VisitGorkyPark(p *gorkyPark) string {
 	return p.WalkAround()
 }
 
+// NewTourist creates tourist
 func NewTourist() *tourist {
 	return &tourist{}
 }

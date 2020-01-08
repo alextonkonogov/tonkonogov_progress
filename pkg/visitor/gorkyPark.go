@@ -2,7 +2,7 @@ package visitor
 
 import "fmt"
 
-// BurgerBar implements the place interface.
+// gorkyPark implements the place interface.
 type gorkyPark struct {
 	name    string
 	product string
@@ -18,7 +18,8 @@ func (g *gorkyPark) WalkAround() string {
 	return fmt.Sprintf("Walk among %v in %v\n", g.product, g.name)
 }
 
-func NewBurgerBar() *gorkyPark {
+// NewGorkyPark creates gorkyPark
+func NewGorkyPark() *gorkyPark {
 	return &gorkyPark{
 		name:    "The Gorky Park",
 		product: "trees and fountains",
