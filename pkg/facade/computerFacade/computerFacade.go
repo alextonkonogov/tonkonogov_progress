@@ -22,17 +22,20 @@ func (f *computerFacade) Start() string {
 	return strings.Join(result, "\n")
 }
 
+// cpu provides a cpu interface
 type cpu interface {
 	Freeze() string
 	Jump(position string) string
 	Execute() string
 }
 
+// memory provides a memory interface
 type memory interface {
 	Load(data string) string
 	GetPosition() string
 }
 
+// hardDrive provides a hardDrive interface
 type hardDrive interface {
 	Read() string
 }
