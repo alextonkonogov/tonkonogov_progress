@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/alextonkonogov/tonkonogov_progress/pkg/facade/computerFacade"
 
+	"github.com/alextonkonogov/tonkonogov_progress/pkg/facade/computerFacade"
 	"github.com/alextonkonogov/tonkonogov_progress/pkg/facade/cpu"
 	"github.com/alextonkonogov/tonkonogov_progress/pkg/facade/hardDrive"
 	"github.com/alextonkonogov/tonkonogov_progress/pkg/facade/memory"
