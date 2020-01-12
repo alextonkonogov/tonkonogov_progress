@@ -1,4 +1,4 @@
-package builder
+package cleanUpTheRoom
 
 import (
 	"fmt"
@@ -6,6 +6,9 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+
+	motherT "github.com/alextonkonogov/tonkonogov_progress/pkg/builder/mother"
+	orderT "github.com/alextonkonogov/tonkonogov_progress/pkg/builder/order"
 )
 
 var tests = []struct {
@@ -22,8 +25,8 @@ func TestBuilder(t *testing.T) {
 		t.Run(name, func(t *testing.T) {
 			toys, bed, floor := tt.toys, tt.bed, tt.floor
 			expect := fmt.Sprintf("Collected %v toys\nMade the bed %v\nVacuumed the floor %v\n", toys, bed, floor)
-			order := NewOrder()
-			mother := NewMother(NewRoomCleaning(order))
+			order := orderT.NewOrder()
+			mother := motherT.NewMother(NewRoomCleaning(order))
 			mother.Cleaning(toys, bed, floor)
 			result := order.Show()
 

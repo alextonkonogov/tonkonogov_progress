@@ -3,17 +3,16 @@ package main
 import (
 	"fmt"
 
-	"github.com/alextonkonogov/tonkonogov_progress/pkg/builder"
+	"github.com/alextonkonogov/tonkonogov_progress/pkg/builder/cleanUpTheRoom"
+	"github.com/alextonkonogov/tonkonogov_progress/pkg/builder/mother"
+	"github.com/alextonkonogov/tonkonogov_progress/pkg/builder/order"
 )
 
 var toys, bed, floor = "scattered", "prorerly", "normally"
 
 func main() {
-	order := builder.NewOrder()
-	builder.Call(order)
-	mother := builder.NewMother(builder.NewRoomCleaning(order))
-	builder.Call(mother)
-	builder.Call(builder.NewRoomCleaning(order))
+	order := order.NewOrder()
+	mother := mother.NewMother(cleanUpTheRoom.NewRoomCleaning(order))
 	mother.Cleaning(toys, bed, floor)
 	result := order.Show()
 

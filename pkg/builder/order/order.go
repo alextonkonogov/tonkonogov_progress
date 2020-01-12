@@ -1,20 +1,18 @@
-package builder
-
-import "fmt"
+package order
 
 // order implements an order
 type order struct {
 	result string
 }
 
+// AddResult adds
+func (o *order) AddResult(result string) {
+	o.result += result
+}
+
 // Show demonstrates an order in the room
 func (o *order) Show() string {
 	return o.result
-}
-
-// Call implementation
-func (o *order) Call() {
-	fmt.Println("...order is expected")
 }
 
 // NewOrder creates an order
