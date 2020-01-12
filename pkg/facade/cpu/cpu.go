@@ -1,10 +1,9 @@
-package facade
+package cpu
 
 import "fmt"
 
 // cpu implements a subsystem "cpu"
 type cpu struct {
-	sound string
 }
 
 // Freeze implementation
@@ -22,14 +21,7 @@ func (c *cpu) Execute() string {
 	return fmt.Sprint("Executing.")
 }
 
-// MakeSound implementation
-func (c *cpu) MakeSound() string {
-	return fmt.Sprintf("...%v...", c.sound)
-}
-
 // NewCPU creates cpu
 func NewCPU() *cpu {
-	return &cpu{
-		sound: "sounds of working cpu",
-	}
+	return &cpu{}
 }

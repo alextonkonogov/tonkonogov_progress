@@ -1,4 +1,4 @@
-package facade
+package computerFacade
 
 import (
 	"fmt"
@@ -6,6 +6,10 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+
+	cpuT "github.com/alextonkonogov/tonkonogov_progress/pkg/facade/cpu"
+	hardDriveT "github.com/alextonkonogov/tonkonogov_progress/pkg/facade/hardDrive"
+	memoryT "github.com/alextonkonogov/tonkonogov_progress/pkg/facade/memory"
 )
 
 var tests = []struct {
@@ -25,8 +29,12 @@ func TestFacade(t *testing.T) {
 	for i, tt := range tests {
 		t.Run(strconv.Itoa(i), func(t *testing.T) {
 			position, lba, size := tt.position, tt.lba, tt.size
-			expect := fmt.Sprintf("...sounds of starting computer...\nFreezing processor.\n...sounds of working cpu...\nLoading from %v data: 'Some data from sector %d with size %d'.\n...sounds of working memory...\n...sounds of working hard drive...\nJumping to: %v.\nExecuting.", position, lba, size, position)
-			computer := NewComputerFacade(position, lba, size)
+			expect := fmt.Sprintf("Freezing processor.\nLoading from %v data: 'Some data from sector %d with size %d'.\nJumping to: %v.\nExecuting.", position, lba, size, position)
+			computer :=
+				NewComputerFacade(
+					cpuT.NewCPU(),
+					memoryT.NewMemory(position),
+					hardDriveT.NewHardDrive(lba, size))
 			result := computer.Start()
 
 			assert.EqualValues(t, expect, result, "Result is not equal to the expected one")
