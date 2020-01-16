@@ -12,11 +12,11 @@ import (
 var position, lba, size = "0x01", 200, 2048
 
 func main() {
-	computer :=
-		computerFacade.NewComputerFacade(
-			cpu.NewCPU(),
-			memory.NewMemory(position),
-			hardDrive.NewHardDrive(lba, size))
+	computer := computerFacade.NewComputerFacade(
+		cpu.NewCPU(),
+		memory.NewMemory(position),
+		hardDrive.NewHardDrive(lba, size),
+	)
 	result := computer.Start()
 	fmt.Println(result)
 }

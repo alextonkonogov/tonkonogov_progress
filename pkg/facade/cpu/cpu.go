@@ -2,6 +2,13 @@ package cpu
 
 import "fmt"
 
+// CPU provides a CPU interface
+type CPU interface {
+	Freeze() string
+	Jump(string) string
+	Execute() string
+}
+
 // cpu implements a subsystem "cpu"
 type cpu struct {
 }
@@ -22,6 +29,6 @@ func (c *cpu) Execute() string {
 }
 
 // NewCPU creates cpu
-func NewCPU() *cpu {
+func NewCPU() CPU {
 	return &cpu{}
 }

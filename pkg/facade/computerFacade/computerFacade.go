@@ -4,22 +4,9 @@ import (
 	"strings"
 )
 
-// computerFacade implements facade
-type computerFacade struct {
-	cpu       cpu
-	memory    memory
-	hardDrive hardDrive
-}
-
-// Start returns how computer will start.
-func (f *computerFacade) Start() string {
-	result := []string{
-		f.cpu.Freeze(),
-		f.memory.Load(f.hardDrive.Read()),
-		f.cpu.Jump(f.memory.GetPosition()),
-		f.cpu.Execute(),
-	}
-	return strings.Join(result, "\n")
+// ComputerFacade provides a ComputerFacade interface
+type ComputerFacade interface {
+	Start() string
 }
 
 // cpu provides a cpu interface
@@ -40,8 +27,26 @@ type hardDrive interface {
 	Read() string
 }
 
+// computerFacade implements facade
+type computerFacade struct {
+	cpu       cpu
+	memory    memory
+	hardDrive hardDrive
+}
+
+// Start returns how computer will start.
+func (f *computerFacade) Start() string {
+	result := []string{
+		f.cpu.Freeze(),
+		f.memory.Load(f.hardDrive.Read()),
+		f.cpu.Jump(f.memory.GetPosition()),
+		f.cpu.Execute(),
+	}
+	return strings.Join(result, "\n")
+}
+
 // NewComputerFacade creates computerFacade
-func NewComputerFacade(cpu cpu, memory memory, hardDrive hardDrive) *computerFacade {
+func NewComputerFacade(cpu cpu, memory memory, hardDrive hardDrive) ComputerFacade {
 	return &computerFacade{
 		cpu:       cpu,
 		memory:    memory,

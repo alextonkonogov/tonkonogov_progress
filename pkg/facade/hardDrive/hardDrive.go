@@ -2,6 +2,11 @@ package hardDrive
 
 import "fmt"
 
+// HardDrive provides a HardDrive interface
+type HardDrive interface {
+	Read() string
+}
+
 // hardDrive implements a subsystem "hardDrive"
 type hardDrive struct {
 	lba, size int
@@ -13,7 +18,7 @@ func (h *hardDrive) Read() string {
 }
 
 // NewHardDrive creates hardDrive
-func NewHardDrive(lba, size int) *hardDrive {
+func NewHardDrive(lba, size int) HardDrive {
 	return &hardDrive{
 		lba:  lba,
 		size: size,
