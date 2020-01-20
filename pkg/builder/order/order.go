@@ -1,5 +1,11 @@
 package order
 
+// Order implements an Order public interface
+type Order interface {
+	AddResult(string)
+	Show() string
+}
+
 // order implements an order
 type order struct {
 	result string
@@ -16,6 +22,6 @@ func (o *order) Show() string {
 }
 
 // NewOrder creates an order
-func NewOrder() *order {
+func NewOrder() Order {
 	return &order{}
 }

@@ -4,6 +4,18 @@ import (
 	"fmt"
 )
 
+// order provides an order interface
+type order interface {
+	AddResult(string)
+}
+
+// RoomCleaning provides a RoomCleaning public interface
+type RoomCleaning interface {
+	MakeTheBed(string)
+	CollectToys(string)
+	VacuumTheFloor(string)
+}
+
 // roomCleaning implements child interface
 type roomCleaning struct {
 	order order
@@ -27,13 +39,8 @@ func (r *roomCleaning) VacuumTheFloor(direction string) {
 	r.order.AddResult(result)
 }
 
-// order provides an order interface
-type order interface {
-	AddResult(string)
-}
-
 // NewRoomCleaning creates roomCleaning
-func NewRoomCleaning(order order) *roomCleaning {
+func NewRoomCleaning(order order) RoomCleaning {
 	return &roomCleaning{
 		order: order,
 	}

@@ -15,6 +15,5 @@ func main() {
 	mother := mother.NewMother(cleanUpTheRoom.NewRoomCleaning(order))
 	mother.Cleaning(toys, bed, floor)
 	result := order.Show()
-
 	fmt.Println(result)
 }
