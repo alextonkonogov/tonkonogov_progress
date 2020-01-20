@@ -4,11 +4,6 @@ import (
 	"strings"
 )
 
-// ComputerFacade provides a ComputerFacade interface
-type ComputerFacade interface {
-	Start() string
-}
-
 // cpu provides a cpu interface
 type cpu interface {
 	Freeze() string
@@ -25,6 +20,11 @@ type memory interface {
 // hardDrive provides a hardDrive interface
 type hardDrive interface {
 	Read() string
+}
+
+// ComputerFacade provides a ComputerFacade public interface
+type ComputerFacade interface {
+	Start() string
 }
 
 // computerFacade implements facade
