@@ -2,7 +2,13 @@ package visitor
 
 import "fmt"
 
-// bolshoiTheatre implements the place interface.
+// BolshoiTheatre provides the BolshoiTheatre interface
+type BolshoiTheatre interface {
+	Accept(visitor) string
+	SeePerformance() string
+}
+
+// bolshoiTheatre implements the place interface
 type bolshoiTheatre struct {
 	name    string
 	product string
@@ -19,7 +25,7 @@ func (b *bolshoiTheatre) SeePerformance() string {
 }
 
 // NewBolshoiTheatre creates bolshoiTheatre
-func NewBolshoiTheatre() *bolshoiTheatre {
+func NewBolshoiTheatre() BolshoiTheatre {
 	return &bolshoiTheatre{
 		name:    "The Bolshoi Theatre",
 		product: "performance",

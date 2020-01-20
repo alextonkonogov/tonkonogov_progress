@@ -1,5 +1,11 @@
 package visitor
 
+// Moscow provides Moscow interface
+type Moscow interface {
+	Add(place)
+	Accept(visitor) string
+}
+
 // moscow implements a collection of places to visit.
 type moscow struct {
 	places []place
@@ -20,7 +26,7 @@ func (m *moscow) Accept(v visitor) string {
 }
 
 // NewMoscow creates moscow
-func NewMoscow() *moscow {
+func NewMoscow() Moscow {
 	return &moscow{
 		places: []place{},
 	}

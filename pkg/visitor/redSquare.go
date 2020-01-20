@@ -2,6 +2,12 @@ package visitor
 
 import "fmt"
 
+// RedSquare provides the RedSquare interface
+type RedSquare interface {
+	Accept(visitor) string
+	MakePhoto() string
+}
+
 // redSquare implements the place interface.
 type redSquare struct {
 	name      string
@@ -19,7 +25,7 @@ func (r *redSquare) MakePhoto() string {
 }
 
 // NewRedSquare creates redSquare
-func NewRedSquare() *redSquare {
+func NewRedSquare() RedSquare {
 	return &redSquare{
 		name:      "The Red Square",
 		showplace: "Spasskaya Tower",

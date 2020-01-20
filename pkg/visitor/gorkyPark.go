@@ -2,6 +2,12 @@ package visitor
 
 import "fmt"
 
+// GorkyPark provides the GorkyPark interface
+type GorkyPark interface {
+	Accept(visitor) string
+	WalkAround() string
+}
+
 // gorkyPark implements the place interface.
 type gorkyPark struct {
 	name    string
@@ -19,7 +25,7 @@ func (g *gorkyPark) WalkAround() string {
 }
 
 // NewGorkyPark creates gorkyPark
-func NewGorkyPark() *gorkyPark {
+func NewGorkyPark() GorkyPark {
 	return &gorkyPark{
 		name:    "The Gorky Park",
 		product: "trees and fountains",

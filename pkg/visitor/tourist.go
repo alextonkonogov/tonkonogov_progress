@@ -1,6 +1,13 @@
 package visitor
 
-// tourist implements the visitor interface.
+// Tourist provides the Tourist interface
+type Tourist interface {
+	VisitBolhoiTheatre(*bolshoiTheatre) string
+	VisitRedSuare(*redSquare) string
+	VisitGorkyPark(*gorkyPark) string
+}
+
+// tourist implements the visitor interface
 type tourist struct {
 }
 
@@ -20,6 +27,6 @@ func (v *tourist) VisitGorkyPark(p *gorkyPark) string {
 }
 
 // NewTourist creates tourist
-func NewTourist() *tourist {
+func NewTourist() Tourist {
 	return &tourist{}
 }
