@@ -3,15 +3,19 @@ package command
 import (
 	"fmt"
 	"testing"
+
+	"github.com/alextonkonogov/tonkonogov_progress/pkg/command/lamp"
+	"github.com/alextonkonogov/tonkonogov_progress/pkg/command/switchOffComand"
+	"github.com/alextonkonogov/tonkonogov_progress/pkg/command/switchOnCommand"
 )
 
+var expect = "The light is on\nThe light is off\n"
+
 func TestCommand(t *testing.T) {
-	expect := "The light is on\nThe light is off\n"
+	lamp := lamp.NewLamp()
 
-	lamp := NewLamp()
-
-	switchOn := NewSwitchOnCommand(lamp)
-	switchOff := NewSwitchOffCommand(lamp)
+	switchOn := switchOnCommand.NewSwitchOnCommand(lamp)
+	switchOff := switchOffComand.NewSwitchOffCommand(lamp)
 
 	toggle := NewToggle()
 	toggle.StoreCommand(switchOn)
