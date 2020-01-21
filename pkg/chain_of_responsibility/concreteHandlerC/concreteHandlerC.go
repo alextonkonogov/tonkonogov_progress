@@ -5,7 +5,7 @@ type handler interface {
 	SendRequest(message int) string
 }
 
-// ConcreteHandlerC implements concreteHandlerC
+// ConcreteHandlerС provides a ConcreteHandlerС interface
 type ConcreteHandlerC interface {
 	SendRequest(int) string
 }
