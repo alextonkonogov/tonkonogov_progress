@@ -5,16 +5,17 @@ type handler interface {
 	SendRequest(message int) string
 }
 
-// concreteHandlerA implements handler concreteHandlerA
+// ConcreteHandlerA provides a ConcreteHandlerA interface
 type ConcreteHandlerA interface {
 	SendRequest(int) string
 }
 
+// concreteHandlerA implements concreteHandlerA
 type concreteHandlerA struct {
 	next handler
 }
 
-// SendRequest implementation.
+// SendRequest implementation
 func (h *concreteHandlerA) SendRequest(message int) (result string) {
 	if message == 1 {
 		result = "Im handler A"
@@ -24,6 +25,7 @@ func (h *concreteHandlerA) SendRequest(message int) (result string) {
 	return
 }
 
+// NewConcreteHandlerA creates ConcreteHandlerA
 func NewConcreteHandlerA(h handler) ConcreteHandlerA {
 	return &concreteHandlerA{next: h}
 }
