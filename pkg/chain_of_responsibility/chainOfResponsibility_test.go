@@ -20,7 +20,7 @@ var m = map[int]string{
 	99: "...silence...",
 }
 
-func TestFacade(t *testing.T) {
+func TestChainOfResponsibility(t *testing.T) {
 	for k, message := range m {
 		t.Run(strconv.Itoa(k), func(t *testing.T) {
 			expect := message
