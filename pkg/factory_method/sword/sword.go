@@ -16,6 +16,6 @@ func (s *sword) Use() string {
 
 func NewSword() Sword {
 	return &sword{
-		action: "shuh shuh!",
+		action: "shuh shuh shuh!",
 	}
 }
