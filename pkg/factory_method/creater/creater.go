@@ -1,37 +1,37 @@
 package creater
 
 import (
-	"github.com/alextonkonogov/tonkonogov_progress/pkg/factory_method/productA"
-	"github.com/alextonkonogov/tonkonogov_progress/pkg/factory_method/productB"
-	"github.com/alextonkonogov/tonkonogov_progress/pkg/factory_method/productC"
+	"github.com/alextonkonogov/tonkonogov_progress/pkg/factory_method/hammer"
+	"github.com/alextonkonogov/tonkonogov_progress/pkg/factory_method/sword"
+	"github.com/alextonkonogov/tonkonogov_progress/pkg/factory_method/whip"
 	"log"
 )
 
-// Producter provides a product interface.
+// Weapon provides a product interface.
 // All products returned by factory must provide a single interface.
-type Producter interface {
+type Weapon interface {
 	Use() string // Every product should be can be used
 }
 
-// Creater provides a factory interface.
-type Creater interface {
-	CreateProduct(string) Producter // Factory Method
+// Blacksmith provides a factory interface.
+type Blacksmith interface {
+	CreateWeapon(string) Weapon // Factory Method
 }
 
-// ConcreteCreater implements Creater interface.
-type creater struct{}
+// ConcreteCreater implements Blacksmith interface.
+type blacksmith struct{}
 
-// CreateProduct is a Factory Method
-func (p *creater) CreateProduct(action string) Producter {
-	var product Producter
+// CreateWeapon is a Factory Method
+func (b *blacksmith) CreateWeapon(action string) Weapon {
+	var product Weapon
 
 	switch action {
-	case "A":
-		product = productA.NewConcreteProductA(action)
-	case "B":
-		product = productB.NewConcreteProductB(action)
-	case "C":
-		product = productC.NewConcreteProductC(action)
+	case "sword":
+		product = sword.NewSword()
+	case "hammer":
+		product = hammer.NewHammer()
+	case "whip":
+		product = whip.NewWhip()
 	default:
 		log.Fatalln("Unknown Action")
 	}
@@ -39,7 +39,7 @@ func (p *creater) CreateProduct(action string) Producter {
 	return product
 }
 
-// NewCreater is the ConcreteCreater constructor.
-func NewCreater() Creater {
-	return &creater{}
+// NewBlacksmith is the ConcreteCreater constructor.
+func NewBlacksmith() Blacksmith {
+	return &blacksmith{}
 }

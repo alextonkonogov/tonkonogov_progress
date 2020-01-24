@@ -4,15 +4,14 @@ import (
 	"testing"
 )
 
+var assert = []string{"shuh shuh!", "bang!", "whoosh whoosh!"}
+
 func TestFactoryMethod(t *testing.T) {
-
-	assert := []string{"A", "B", "C"}
-
-	factory := NewCreater()
-	products := []Producter{
-		factory.CreateProduct("A"),
-		factory.CreateProduct("B"),
-		factory.CreateProduct("C"),
+	factory := NewBlacksmith()
+	products := []Weapon{
+		factory.CreateWeapon("sword"),
+		factory.CreateWeapon("hammer"),
+		factory.CreateWeapon("whip"),
 	}
 
 	for i, product := range products {
