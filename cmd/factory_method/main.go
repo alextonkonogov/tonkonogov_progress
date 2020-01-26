@@ -30,7 +30,6 @@ func main() {
 		factory.CreateWeapon("sword", defineWeapon),
 		factory.CreateWeapon("hammer", defineWeapon),
 		factory.CreateWeapon("whip", defineWeapon),
-		factory.CreateWeapon("asdasd", defineWeapon),
 	}
 
 	for _, weapon := range weapons {
