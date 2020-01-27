@@ -7,7 +7,7 @@ type child interface {
 	VacuumTheFloor(direction string)
 }
 
-// Mother implements a Mother public interface
+// Mother provides a Mother public interface
 type Mother interface {
 	Cleaning(string, string, string)
 }

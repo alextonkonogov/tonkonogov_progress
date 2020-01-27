@@ -35,8 +35,6 @@ func TestBuilder(t *testing.T) {
 			mother := motherT.NewMother(NewRoomCleaning(order))
 			mother.Cleaning(toys, bed, floor)
 			result := order.Show()
-
-			fmt.Println(result)
 			assert.EqualValues(t, expect, result, "Result is not equal to the expected one")
 		})
 	}
