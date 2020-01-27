@@ -1,23 +1,23 @@
 package strategy
 
-// StrategyAction provides a StrategyAction interface
-type StrategyAction interface {
+// Applier provides a Applier interface
+type Applier interface {
 	Apply(int, int) int
 }
 
 // Context provides a Context interface
 type Context interface {
-	Action(StrategyAction)
+	Action(Applier)
 	Apply(int, int) int
 }
 
-// context provides a context for execution of a strategy.
+// context implements a Context interface
 type context struct {
-	strategy StrategyAction
+	strategy Applier
 }
 
 // Action implementation
-func (c *context) Action(a StrategyAction) {
+func (c *context) Action(a Applier) {
 	c.strategy = a
 }
 
@@ -26,7 +26,7 @@ func (c *context) Apply(f, s int) int {
 	return c.strategy.Apply(f, s)
 }
 
-// NewContext creates a new Context
+// NewContext creates a context
 func NewContext() Context {
 	return &context{}
 }
