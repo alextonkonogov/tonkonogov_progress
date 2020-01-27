@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+
 	c "github.com/alextonkonogov/tonkonogov_progress/pkg/factory_method/creater"
 	h "github.com/alextonkonogov/tonkonogov_progress/pkg/factory_method/hammer"
 	s "github.com/alextonkonogov/tonkonogov_progress/pkg/factory_method/sword"
